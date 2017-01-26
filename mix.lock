@@ -1,0 +1,2 @@
+%{"ranch": {:hex, :ranch, "1.2.1", "a6fb992c10f2187b46ffd17ce398ddf8a54f691b81768f9ef5f461ea7e28c762", [:make], []},
+  "smppex": {:hex, :smppex, "0.1.9", "c01762b3010cb5b7d4e9cf1821a779edd0bf5ae5c3ada3387acd9dbcf941ba1c", [:mix], [{:ranch, "~> 1.2", [hex: :ranch, optional: false]}]}}
