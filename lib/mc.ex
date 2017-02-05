@@ -12,9 +12,13 @@ defmodule SimpleMC.MC do
   end
 
   def handle_pdu(pdu, last_id) do
-    Logger.info("recieved pdu: #{inspect pdu}")
+    Logger.debug("received pdu: #{SMPPEX.Pdu.PP.format pdu}")
 
     case pdu |> SMPPEX.Pdu.command_id |> SMPPEX.Protocol.CommandNames.name_by_id do
+      {:ok, :enquire_link} ->
+        SMPPEX.MC.reply(self(), pdu, SMPPEX.Pdu.Factory.enquire_link_resp())
+        last_id
+
       {:ok, :submit_sm} ->
         SMPPEX.MC.reply(self(), pdu, SMPPEX.Pdu.Factory.submit_sm_resp(0, to_string(last_id)))
         last_id + 1
